@@ -14,8 +14,12 @@
 </head>
 <body>
 <main>
-    <div class="jumbotron">
-        <h1><span class="lock-state">Loading</span></h1>
+    <div class="container-fluid">
+        <div class="d-flex align-items-center justify-content-center" style="height: 100vh">
+        <div class="jumbotron">
+            <h1><span class="lock-state">Loading..</span></h1>
+        </div>
+        </div>
     </div>
 </main>
 <footer>
@@ -31,16 +35,13 @@
     <script>
         $(function () {
             const socket = io('http://192.168.1.20:5000');
-
             socket.on("card-read", (data) => {
-                console.log("card-read", data)
                 const lockState = $('.lock-state')
                 if (data.locked) {
                     lockState.text("Locked")
                 } else {
                     lockState.text("Unlocked")
                 }
-
             })
         });
     </script>
